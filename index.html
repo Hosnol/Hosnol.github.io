@@ -1,23 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="dist/output.css" rel="stylesheet">
-    <link rel="icon" href="dist/img/logo/logo 3.svg" type="image/x-icon">
+    <link href="dist/output.css" rel="stylesheet" />
+    <link rel="icon" href="dist/img/logo/logo 3.svg" type="image/x-icon" />
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
     <title>Portfolio</title>
 </head>
 
 <body>
     <!-- Header Start -->
-    <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 ">
+    <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
         <div class="container">
             <div class="flex items-center justify-between relative">
                 <div class="px-4">
-                    <a href="#home" class="font-bold text-lg text-dark py-6 flex items-center">
-                        <img src="dist/img/logo/logo 3.svg" alt="logo" class="w-10 h-10 mr-[0.15rem]">
+                    <a href="#home" class="font-bold text-lg text-dark py-6 flex items-center dark:text-white">
+                        <img src="dist/img/logo/logo 3.svg" alt="logo" class="w-10 h-10 mr-[0.15rem] dark:bg-white" />
                         <span>osnol Arifin</span>
                     </a>
                 </div>
@@ -29,29 +37,45 @@
                     </button>
 
                     <nav id="nav-menu"
-                        class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+                        class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none dark:bg-dark dark:shadow-slate-500 lg:dark:bg-transparent">
                         <ul class="block lg:flex">
                             <li class="group">
                                 <a href="#home"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Beranda</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Beranda</a>
                             </li>
                             <li class="group">
                                 <a href="#about"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Tentang Saya</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Tentang
+                                    Saya</a>
                             </li>
                             <li class="group">
                                 <a href="#portfolio"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Portfolio</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Portfolio</a>
                             </li>
                             <li class="group">
                                 <a href="#skill"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Keahlian</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Keahlian</a>
                             </li>
                             <li class="group">
                                 <div class="py-2 mx-8">
                                     <a href="/dist/file/HosnolArifin_CV.pdf" download="Hosnol Arifin_CV"
                                         class="text-base text-white bg-primary py-3 px-6 rounded-lg hover:shadow-lg hover:bg-sky-400">Download
                                         CV</a>
+                                </div>
+                            </li>
+                            <li class=" mt-3 lg:mt-0 flex items-center pl-8">
+                                <div class="flex">
+                                    <span class="mr-2 text-sm text-slate-500">light</span>
+                                    <input type="checkbox" class="hidden" id="dark-toggle" />
+                                    <label for="dark-toggle">
+                                        <div
+                                            class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1">
+                                            <div
+                                                class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out">
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <span class="ml-2 text-sm text-slate-500">dark</span>
                                 </div>
                             </li>
                         </ul>
@@ -63,18 +87,22 @@
     <!-- End Header -->
 
     <!-- Hero Section Start -->
-    <section id="home" class="pt-36">
+    <section id="home" class="pt-36 dark:bg-dark">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full self-center px-4 lg:w-1/2">
-                    <h1 class="text-base font-semibold text-primary md:text-xl">Halo 👋, saya
-                        <span class="block font-bold text-dark text-4xl mt-1">Hosnol Arifin</span>
+                    <h1 class="text-base font-semibold text-primary md:text-xl">
+                        Halo 👋, saya
+                        <span class="block font-bold text-dark text-4xl mt-1 dark:text-white">Hosnol Arifin</span>
                     </h1>
-                    <h2 class="font-medium text-slate-600 text-lg mb-5 lg:text-2xl">Programmer & IT Support </h2>
-                    <p class="font-medium text-slate-500 mb-10 leading-relaxed text-justify">Saya seorang programmer
-                        dan juga
-                        sebagai IT support dengan keahlian pada bidang back-end,
-                        troubleshooting perangkat lunak dan keras pada PC, serta masih banyak lagi...</p>
+                    <h2 class="font-medium text-slate-600 text-lg mb-5 lg:text-2xl">
+                        Programmer & IT Support
+                    </h2>
+                    <p class="font-medium text-slate-500 mb-10 leading-relaxed text-justify">
+                        Saya seorang programmer dan juga sebagai IT support dengan
+                        keahlian pada bidang back-end, troubleshooting perangkat lunak dan
+                        keras pada PC, serta masih banyak lagi...
+                    </p>
 
                     <!-- logo media linked in, email, dan whasthap start-->
                     <div class="flex items-center space-x-5 mb-10">
@@ -98,8 +126,8 @@
                 <!-- profile start-->
                 <div class="w-full self-end px-4 lg:w-1/2">
                     <div class="relative mt-10 lg:mt-9 lg:right-0">
-                        <img class="max-w-full mx-auto" src="dist/img/logo/profile.png" alt="profile" />
-                        <span class="absolute bottom-0 -z-10 left-1/2 -translate-x-1/2 md:scale-125">
+                        <img class="relative z-10 max-w-full mx-auto" src="dist/img/logo/profile.png" alt="profile" />
+                        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 md:scale-125">
                             <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                                 <path fill="#0ea5e9"
                                     d="M30.4,-48.3C38.3,-48.2,42.6,-37.7,53.2,-27.9C63.7,-18.1,80.5,-9,83.1,1.5C85.7,12.1,74.2,24.1,60.6,28.6C46.9,33,31.1,29.8,20.7,36.9C10.2,44,5.1,61.3,-1.4,63.7C-7.8,66,-15.6,53.3,-28.7,47.8C-41.9,42.2,-60.3,43.8,-67.2,37C-74.2,30.3,-69.8,15.1,-65.1,2.7C-60.4,-9.7,-55.3,-19.3,-52.2,-32.9C-49.1,-46.4,-48,-63.8,-39.6,-63.6C-31.3,-63.4,-15.6,-45.6,-2.2,-41.9C11.3,-38.1,22.6,-48.4,30.4,-48.3Z"
@@ -115,38 +143,45 @@
     <!-- Hero Section End -->
 
     <!-- About Section Start -->
-    <section id="about" class="pt-36 pb-32">
+    <section id="about" class="pt-36 pb-32 dark:bg-dark">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full px-4 lg:w-1/2">
-                    <h2 class="text-lg uppercase font-bold text-primary mb-4">Tentang Saya</h2>
-                    <h3 class="font-bold text-3xl max-w-md text-dark mb-2 lg:text-4xl">Perkenalkan diri saya adalah...
+                    <h2 class="text-lg uppercase font-bold text-primary mb-4">
+                        Tentang Saya
+                    </h2>
+                    <h3 class="font-bold text-3xl max-w-md text-dark mb-2 lg:text-4xl dark:text-white">
+                        Perkenalkan diri saya adalah...
                     </h3>
                     <p class="text-slate-500 text-base font-medium mb-6 text-justify">
-                        Lulusan D4 Teknik Informatika di Politeknik Negeri Malang dengan semangat dan antusiasme yang
-                        tinggi untuk terus
-                        belajar dan berkontribusi dalam dunia teknologi. Selama masa kuliah, saya terlibat dalam
-                        berbagai proyek baik secara
-                        individu maupun kelompok yang melibatkan pengembangan web, analisis data, serta jaringan
-                        komputer. Saya juga aktif
-                        dalam berbagai kegiatan di luar kelas yang memperluas wawasan saya tentang dunia teknologi
+                        Lulusan D4 Teknik Informatika di Politeknik Negeri Malang dengan
+                        semangat dan antusiasme yang tinggi untuk terus belajar dan
+                        berkontribusi dalam dunia teknologi. Selama masa kuliah, saya
+                        terlibat dalam berbagai proyek baik secara individu maupun
+                        kelompok yang melibatkan pengembangan web, analisis data, serta
+                        jaringan komputer. Saya juga aktif dalam berbagai kegiatan di luar
+                        kelas yang memperluas wawasan saya tentang dunia teknologi
                         informasi.
                     </p>
                 </div>
                 <div class="w-full px-4 lg:w-1/2">
-                    <h3 class="font-semibold text-2xl text-dark mb-4 lg:text-3xl lg:pt-12"> Latar Pendidikan</h3>
+                    <h3 class="font-semibold text-2xl text-dark mb-4 lg:text-3xl lg:pt-12 dark:text-white">
+                        Latar Pendidikan
+                    </h3>
                     <div class="mb-4 p-4 border rounded border-gray-300 flex items-center">
                         <!-- Gambar Politeknik -->
                         <img src="dist/img/logo/logo1.png" alt="Politeknik Logo" class="w-10 h-10 mr-4" />
 
                         <!-- Informasi Pendidikan Politeknik -->
                         <div>
-                            <h3 class="font-semibold text-dark mb-2 text-base">
+                            <h3 class="font-semibold text-dark mb-2 text-base dark:text-white">
                                 Politeknik Negeri Malang
                                 <span class="text-gray-500 text-sm">(2019 - 2023)</span>
                             </h3>
-                            <p class="text-gray-700 italic">DIV Teknik Informatika, <span
-                                    class="font-semibold">3.77/4.00</span></p>
+                            <p class="text-gray-700 italic">
+                                DIV Teknik Informatika,
+                                <span class="font-semibold">3.77/4.00</span>
+                            </p>
                         </div>
                     </div>
 
@@ -156,15 +191,16 @@
 
                         <!-- Informasi Pendidikan SMK -->
                         <div>
-                            <h3 class="font-semibold text-dark mb-2 text-base">
+                            <h3 class="font-semibold text-dark mb-2 text-base dark:text-white">
                                 SMK Negeri 1 Suboh Situbondo
                                 <span class="text-gray-500 text-sm">(2016 - 2019)</span>
                             </h3>
-                            <p class="text-gray-700 italic">Teknik Komputer dan Jaringan, <span
-                                    class="font-semibold">70.40/100.00</span></p>
+                            <p class="text-gray-700 italic">
+                                Teknik Komputer dan Jaringan,
+                                <span class="font-semibold">70.40/100.00</span>
+                            </p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -172,96 +208,122 @@
     <!-- About Section End -->
 
     <!-- Portfolio Section Start -->
-    <section id="portfolio" class="pt-40 pb-16 bg-slate-100">
+    <section id="portfolio" class="pt-40 pb-16 bg-slate-100 dark:bg-slate-700">
         <div class="container">
             <div class="w-full px-4">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Portfolio</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">Project Saya</h2>
-                    <p class="font-medium text-md text-slate-500 md:text-l">Berikut ini adalah project yang pernah saya
-                        kerjakan selama di perkuliahan atau pun project
-                        mandiri untuk mengasah kemampuan dalam mengembangkan sebuah website atau aplikasi.</p>
+                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">
+                        Project Saya
+                    </h2>
+                    <p class="font-medium text-md text-slate-500 md:text-l">
+                        Berikut ini adalah project yang pernah saya kerjakan selama di
+                        perkuliahan atau pun project mandiri untuk mengasah kemampuan
+                        dalam mengembangkan sebuah website atau aplikasi.
+                    </p>
                 </div>
             </div>
             <div class="w-full px-4 flex flex-wrap justify-center xl:10/12 xl:mx-auto">
                 <div class="mb-12 p-4 md:w-1/2">
                     <div class="rounded-md shadow-md overflow-hidden">
                         <a href="https://github.com/Hosnol/Hosnol.github.io" target="_blank">
-                            <img src="dist/img/project/project 1.png" alt="project 1" class="w-full ">
+                            <img src="dist/img/project/project 1.png" alt="project 1" class="w-full" />
                         </a>
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Website Portfolio</h3>
-                    <p class="font-medium text-base text-slate-500 text-justify">Project ini fokus pada pembuatan
-                        website
-                        portfolio yang stylish dan responsif dengan memanfaatkan kekuatan Tailwind CSS. Desain simpel
-                        dan intuitif, ditambah dengan animasi halus, memberikan tampilan yang menarik. Penggunaan
-                        komponen Tailwind mempermudah proses pengembangan, sementara optimisasi kinerja meningkatkan
-                        kecepatan pemuatan. Hasilnya adalah portfolio yang efisien, memukau, dan mudah dinavigasi.</p>
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">
+                        Website Portfolio
+                    </h3>
+                    <p class="font-medium text-base text-slate-500 text-justify">
+                        Project ini fokus pada pembuatan website portfolio yang stylish
+                        dan responsif dengan memanfaatkan kekuatan Tailwind CSS. Desain
+                        simpel dan intuitif, ditambah dengan animasi halus, memberikan
+                        tampilan yang menarik. Penggunaan komponen Tailwind mempermudah
+                        proses pengembangan, sementara optimisasi kinerja meningkatkan
+                        kecepatan pemuatan. Hasilnya adalah portfolio yang efisien,
+                        memukau, dan mudah dinavigasi.
+                    </p>
                 </div>
                 <div class="mb-12 p-4 md:w-1/2">
                     <div class="rounded-md shadow-md overflow-hidden">
                         <a href="https://github.com/Hosnol/books-app-back-end" target="_blank">
-                            <img src="dist/img/project/project 2.png" alt="project 2" class="w-full">
+                            <img src="dist/img/project/project 2.png" alt="project 2" class="w-full" />
                         </a>
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Books App Back-End</h3>
-                    <p class="font-medium text-base text-slate-500 text-justify">Project ini adalah bagian back-end dari
-                        aplikasi Books yang memiliki fitur CRUD (Create, Read, Update, Delete). Aplikasi ini
-                        memungkinkan pengguna untuk mengelola daftar buku. Dengan teknologi yang digunakan Node.js untuk
-                        Runtime JavaScript server dan Hapi untuk kerangka kerja back-end untuk Node.js</p>
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">
+                        Books App Back-End
+                    </h3>
+                    <p class="font-medium text-base text-slate-500 text-justify">
+                        Project ini adalah bagian back-end dari aplikasi Books yang
+                        memiliki fitur CRUD (Create, Read, Update, Delete). Aplikasi ini
+                        memungkinkan pengguna untuk mengelola daftar buku. Dengan
+                        teknologi yang digunakan Node.js untuk Runtime JavaScript server
+                        dan Hapi untuk kerangka kerja back-end untuk Node.js
+                    </p>
                 </div>
                 <div class="mb-12 p-4 md:w-1/2">
                     <div class="rounded-md shadow-md overflow-hidden">
                         <a href="https://github.com/Hosnol/Klasifikasi_Ukuran_Bibit_Ikan_Lele" target="_blank">
-                            <img src="dist/img/project/project 3.jpg" alt="project 3" class="w-full">
+                            <img src="dist/img/project/project 3.jpg" alt="project 3" class="w-full" />
                         </a>
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Klasifikasi Ukuan Bibit Ikan Lele</h3>
-                    <p class="font-medium text-base text-slate-500 text-justify">Aplikasi ini merupakan tugas akhir saya
-                        (skripsi) yang digunakan untuk mengatasi masalah pada proses
-                        grading bibit ikan lele secara manual dengan menggunakan metode Deep
-                        Convolutional Neural Network (DCNN) dengan arsitektur MobileNetV2 dan alat
-                        OpenMV Cam.</p>
-                </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <a href="" target="_blank">
-                            <img src="dist/img/project/project 4.png" alt="project 4" class="w-full">
-                        </a>
-                    </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Online Shop</h3>
-                    <p class="font-medium text-base text-slate-500 text-justify">Sebuah simple website yang menerapkan
-                        konsep SPA (Single Page Apllication)
-                        dengan React Router dan menerapkan JSON API untuk data produk dan ketika memasukkan produk ke
-                        keranjang. Memiliki beberapa menu diantaranya Home, List produk, Keranjang dan About.
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">
+                        Klasifikasi Ukuan Bibit Ikan Lele
+                    </h3>
+                    <p class="font-medium text-base text-slate-500 text-justify">
+                        Aplikasi ini merupakan tugas akhir saya (skripsi) yang digunakan
+                        untuk mengatasi masalah pada proses grading bibit ikan lele secara
+                        manual dengan menggunakan metode Deep Convolutional Neural Network
+                        (DCNN) dengan arsitektur MobileNetV2 dan alat OpenMV Cam.
                     </p>
                 </div>
                 <div class="mb-12 p-4 md:w-1/2">
                     <div class="rounded-md shadow-md overflow-hidden">
                         <a href="" target="_blank">
-                            <img src="dist/img/project/project 5.png" alt="project 5" class="w-full">
+                            <img src="dist/img/project/project 4.png" alt="project 4" class="w-full" />
                         </a>
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Monitoring Suhu Air Tambak Udang Berbasis IoT
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">
+                        Online Shop
                     </h3>
-                    <p class="font-medium text-base text-slate-500 text-justify">Proyek ini digunakan untuk
-                        melakukan monitoring air pada tambak udang dengan menggunakan sensor DS18B20 untuk
-                        mengetahui suhu pada air tambang tersebut. Dari suhu air tersebut maka dapat ditentukan kualitas
-                        air baik untuk
-                        tambak udang atau tidak, lalu di monitoring melalui hp/website.
+                    <p class="font-medium text-base text-slate-500 text-justify">
+                        Sebuah simple website yang menerapkan konsep SPA (Single Page
+                        Apllication) dengan React Router dan menerapkan JSON API untuk
+                        data produk dan ketika memasukkan produk ke keranjang. Memiliki
+                        beberapa menu diantaranya Home, List produk, Keranjang dan About.
+                    </p>
+                </div>
+                <div class="mb-12 p-4 md:w-1/2">
+                    <div class="rounded-md shadow-md overflow-hidden">
+                        <a href="" target="_blank">
+                            <img src="dist/img/project/project 5.png" alt="project 5" class="w-full" />
+                        </a>
+                    </div>
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">
+                        Monitoring Suhu Air Tambak Udang Berbasis IoT
+                    </h3>
+                    <p class="font-medium text-base text-slate-500 text-justify">
+                        Proyek ini digunakan untuk melakukan monitoring air pada tambak
+                        udang dengan menggunakan sensor DS18B20 untuk mengetahui suhu pada
+                        air tambang tersebut. Dari suhu air tersebut maka dapat ditentukan
+                        kualitas air baik untuk tambak udang atau tidak, lalu di
+                        monitoring melalui hp/website.
                     </p>
                 </div>
                 <div class="mb-12 p-4 md:w-1/2">
                     <div class="rounded-md shadow-md overflow-hidden">
                         <a href="https://github.com/Hosnol/TugasBesarWebsite-Restoran" target="_blank">
-                            <img src="dist/img/project/project 6.png" alt="project 6" class="w-full">
+                            <img src="dist/img/project/project 6.png" alt="project 6" class="w-full" />
                         </a>
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Website Restoran</h3>
-                    <p class="font-medium text-base text-slate-500 text-justify">Website restoran ini dikembangkan
-                        menggunakan PHP native untuk memberikan pengalaman pengguna yang sederhana dan efisien. Website
-                        ini dirancang untuk memenuhi kebutuhan pengguna dengan sederhana, menawarkan informasi yang
-                        jelas tentang menu, harga, serta pesanan.
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">
+                        Website Restoran
+                    </h3>
+                    <p class="font-medium text-base text-slate-500 text-justify">
+                        Website restoran ini dikembangkan menggunakan PHP native untuk
+                        memberikan pengalaman pengguna yang sederhana dan efisien. Website
+                        ini dirancang untuk memenuhi kebutuhan pengguna dengan sederhana,
+                        menawarkan informasi yang jelas tentang menu, harga, serta
+                        pesanan.
                     </p>
                 </div>
             </div>
@@ -270,73 +332,76 @@
     <!-- Portfolio Section End -->
 
     <!-- Skill Section Start -->
-    <section id="skill" class="pt-36 pb-32 bg-slate-800">
+    <section id="skill" class="pt-36 pb-32 bg-slate-300 dark:bg-slate-800">
         <div class="container">
             <div class="w-full px-4">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Keahlian</h4>
-                    <h2 class="font-bold text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Keterampilan Saya</h2>
-                    <p class="font-medium text-md text-slate-400 md:text-lg">Berikut adalah beberapa keahlian yang saya
-                        kuasai.</p>
+                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">
+                        Keterampilan Saya
+                    </h2>
+                    <p class="font-medium text-md text-dark md:text-lg dark:text-slate-400">
+                        Berikut adalah beberapa keahlian yang saya kuasai.
+                    </p>
                 </div>
             </div>
             <div class="w-full px-10 xl:px-64">
                 <div class="flex flex-wrap items-center justify-center">
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/html.svg" alt="skill_1">
+                        <img src="dist/img/skill/html.svg" alt="skill_1" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/css-3.svg" alt="skill_2">
+                        <img src="dist/img/skill/css-3.svg" alt="skill_2" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/js.svg" alt="skill_3">
+                        <img src="dist/img/skill/js.svg" alt="skill_3" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/php.svg" alt="skill_4">
+                        <img src="dist/img/skill/php.svg" alt="skill_4" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/python.svg" alt="skill_5">
+                        <img src="dist/img/skill/python.svg" alt="skill_5" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/tailwind.svg" alt="skill_6">
+                        <img src="dist/img/skill/tailwind.svg" alt="skill_6" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/bootstrap.svg" alt="skill_7">
+                        <img src="dist/img/skill/bootstrap.svg" alt="skill_7" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/nodejs.svg" alt="skill_8">
+                        <img src="dist/img/skill/nodejs.svg" alt="skill_8" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/react.svg" alt="skill_9">
+                        <img src="dist/img/skill/react.svg" alt="skill_9" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/laravel.svg" alt="skill_10">
+                        <img src="dist/img/skill/laravel.svg" alt="skill_10" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/mysql.svg" alt="skill_11">
+                        <img src="dist/img/skill/mysql.svg" alt="skill_11" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/tf.svg" alt="skill_12">
+                        <img src="dist/img/skill/tf.svg" alt="skill_12" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/iot.svg" alt="skill_13">
+                        <img src="dist/img/skill/iot.svg" alt="skill_13" />
                     </div>
                     <div
                         class="max-w-[60px] mx-3 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-4 xl:mx-5">
-                        <img src="dist/img/skill/troubleshooting.svg" alt="skill_14">
+                        <img src="dist/img/skill/troubleshooting.svg" alt="skill_14" />
                     </div>
                 </div>
             </div>
@@ -345,13 +410,22 @@
     <!-- Skill Section End -->
 
     <!-- Footer Section Start -->
-    <footer class="pt-5 pb-10">
-        <p class="font-medium text-sm text-slate-800 text-center">
-            Dibuat oleh <a href="https://www.linkedin.com/in/hosnol-arifin/" target="_blank" class="text-primary font-bold">Hosnol Arifin</a>, dengan 
+    <footer class="pt-10 pb-10 dark:bg-dark">
+        <p class="font-medium text-sm text-slate-800 text-center dark:text-white">
+            Dibuat oleh
+            <a href="https://www.linkedin.com/in/hosnol-arifin/" target="_blank" class="text-primary font-bold">Hosnol
+                Arifin</a>, dengan
             <a href="https://tailwindcss.com/" target="_blank" class="text-primary font-bold">Tailwind CSS</a>.
         </p>
     </footer>
     <!-- Footer Section End -->
+
+    <!-- Back to top Start -->
+    <a id="top" href="#home"
+        class="hidden fixed justify-center items-center bottom-4 right-4 z-[9999] p-4 h-14 w-14 rounded-full bg-primary hover:animate-pulse">
+        <span class="block h-5 w-5 border-t-2 border-l-2 rotate-45 mt-2"></span>
+    </a>
+    <!-- Back to top End -->
 
     <script src="dist/js/script.js"></script>
 </body>
